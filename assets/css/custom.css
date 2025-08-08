@@ -568,3 +568,54 @@
   from { width: 0; }
   to { width: var(--skill-level); }
 }
+
+/* ===== Compact Project Stats (above projects) ===== */
+.project-stats-compact {
+  margin-bottom: 10px;
+  padding: 0 0 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  box-shadow: none;
+}
+
+.stats-item-compact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+  color: #149ddd;
+  font-weight: 600;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0 8px;
+}
+
+.stats-item-compact span {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #149ddd;
+  margin-bottom: 2px;
+}
+
+.stats-item-compact small {
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .project-stats-compact {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .stats-item-compact {
+    font-size: 0.95rem;
+    margin: 0 4px 4px 0;
+  }
+  .stats-item-compact span {
+    font-size: 1rem;
+  }
+}
