@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Michael Jansen- The Dancing Robot</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>{{PROJECT_TITLE}} - Soham Ranade</title>
+  <meta content="{{PROJECT_DESCRIPTION}}" name="description">
+  <meta content="{{PROJECT_KEYWORDS}}" name="keywords">
 
   <!-- Favicons -->
- <link href="assets/img/icon.jpg" rel="icon">
+  <link href="assets/img/icon.jpg" rel="icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -28,12 +28,6 @@
   <link href="assets/css/custom.css" rel="stylesheet">
   <link href="assets/css/project-detail.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: iPortfolio - v3.0.1
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -57,10 +51,10 @@
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="index.html#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li><a href="index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
           <li><a href="index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="index.html#Projects" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Project</span></a></li>
+          <li><a href="index.html#Projects" class="nav-link scrollto active"><i class="bx bx-book-content"></i> <span>Projects</span></a></li>
           <li><a href="index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
         </ul>
       </nav><!-- .nav-menu -->
@@ -72,16 +66,14 @@
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
-
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Michael Jansen: The Dancing Robot</h2>
+          <h2>{{PROJECT_TITLE}}</h2>
           <ol>
             <li><a href="index.html">Home</a></li>
             <li><a href="index.html#Projects">Projects</a></li>
-            <li>Michael Jansen</li>
+            <li>{{PROJECT_TITLE}}</li>
           </ol>
         </div>
-
       </div>
     </section><!-- End Breadcrumbs -->
 
@@ -91,23 +83,30 @@
         <div class="row align-items-center">
           <div class="col-lg-6" data-aos="fade-up">
             <div class="project-hero-content">
-              <h1>Michael Jansen: The Dancing Robot</h1>
-              <p class="lead">A humanoid dancing robot inspired by Boston Dynamics, featuring advanced motion control and the innovative Jansen walking mechanism.</p>
+              <h1>{{PROJECT_TITLE}}</h1>
+              <p class="lead">{{PROJECT_SHORT_DESCRIPTION}}</p>
               <div class="project-meta">
-                <span class="badge badge-category">Robotics</span>
-                <span class="project-date">2022</span>
-                <span class="project-status status-completed">Completed</span>
+                <span class="badge badge-category">{{PROJECT_CATEGORY}}</span>
+                <span class="project-date">{{PROJECT_DATE}}</span>
+                <span class="project-status status-{{PROJECT_STATUS}}">{{PROJECT_STATUS}}</span>
               </div>
               <div class="project-actions mt-4">
-                <a href="https://youtu.be/erLCOFPFAjo" target="_blank" class="btn btn-primary">
-                  <i class="bx bx-play"></i> Watch Demo Video
+                {{#PROJECT_GITHUB_LINK}}
+                <a href="{{PROJECT_GITHUB_LINK}}" target="_blank" class="btn btn-outline-primary">
+                  <i class="bx bxl-github"></i> View on GitHub
                 </a>
+                {{/PROJECT_GITHUB_LINK}}
+                {{#PROJECT_LIVE_DEMO}}
+                <a href="{{PROJECT_LIVE_DEMO}}" target="_blank" class="btn btn-primary">
+                  <i class="bx bx-link-external"></i> Live Demo
+                </a>
+                {{/PROJECT_LIVE_DEMO}}
               </div>
             </div>
           </div>
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
             <div class="project-hero-image">
-              <img src="Media/glamourshot.jpg" alt="Michael Jansen Dancing Robot" class="img-fluid rounded">
+              <img src="{{PROJECT_HERO_IMAGE}}" alt="{{PROJECT_TITLE}}" class="img-fluid rounded">
             </div>
           </div>
         </div>
@@ -119,22 +118,18 @@
       <div class="container">
         <div class="section-title">
           <h2>Project Gallery</h2>
-          <p>Visual documentation of Michael Jansen's design and development process</p>
+          <p>Visual documentation and key moments from the project development</p>
         </div>
         
         <div class="row">
           <div class="col-lg-8" data-aos="fade-up">
             <div class="project-gallery-slider swiper-container">
               <div class="swiper-wrapper">
+                {{#PROJECT_IMAGES}}
                 <div class="swiper-slide">
-                  <img src="Media/GlamourPhoto2.jpg" alt="Michael Jansen Full View" class="img-fluid">
+                  <img src="{{.}}" alt="{{PROJECT_TITLE}}" class="img-fluid">
                 </div>
-                <div class="swiper-slide">
-                  <img src="Media/glamourshot.jpg" alt="Michael Jansen Glamour Shot" class="img-fluid">
-                </div>
-                <div class="swiper-slide">
-                  <img src="Media/sideview.jpg" alt="Michael Jansen Side View" class="img-fluid">
-                </div>
+                {{/PROJECT_IMAGES}}
               </div>
               <div class="swiper-pagination"></div>
               <div class="swiper-button-next"></div>
@@ -148,31 +143,29 @@
               
               <div class="info-item">
                 <h6><i class="bx bx-calendar"></i> Timeline</h6>
-                <p>Fall 2022 Semester</p>
+                <p>{{PROJECT_DATE}}</p>
               </div>
               
               <div class="info-item">
                 <h6><i class="bx bx-category"></i> Category</h6>
-                <p>Robotics & Mechanical Design</p>
+                <p>{{PROJECT_CATEGORY}}</p>
               </div>
               
               <div class="info-item">
                 <h6><i class="bx bx-code-alt"></i> Technologies</h6>
                 <div class="tech-tags">
-                  <span class="tech-tag">SolidWorks</span>
-                  <span class="tech-tag">Raspberry Pi</span>
-                  <span class="tech-tag">3D Printing</span>
-                  <span class="tech-tag">Servo Control</span>
+                  {{#PROJECT_TECHNOLOGIES}}
+                  <span class="tech-tag">{{.}}</span>
+                  {{/PROJECT_TECHNOLOGIES}}
                 </div>
               </div>
               
               <div class="info-item">
                 <h6><i class="bx bx-tag"></i> Tags</h6>
                 <div class="project-tags">
-                  <span class="project-tag">Columbia University</span>
-                  <span class="project-tag">Jansen Mechanism</span>
-                  <span class="project-tag">Dancing Robot</span>
-                  <span class="project-tag">Team Project</span>
+                  {{#PROJECT_TAGS}}
+                  <span class="project-tag">{{.}}</span>
+                  {{/PROJECT_TAGS}}
                 </div>
               </div>
             </div>
@@ -188,53 +181,11 @@
           <div class="col-lg-8" data-aos="fade-up">
             <div class="description-content">
               <h3>Project Overview</h3>
-              <p>
-                As part of my first semester at Columbia University, our team designed and built Michael Jansen, a dancing robot inspired by Boston Dynamics' viral dancing robot videos. This project combined mechanical design, control systems, and creative engineering to create a robot capable of performing coordinated dance movements.
-              </p>
+              <p>{{PROJECT_FULL_DESCRIPTION}}</p>
               
-              <div class="project-section">
-                <h4>Design Process</h4>
-                <p>
-                  The project began with extensive research and brainstorming sessions where we sketched various design concepts. We ultimately decided to base our robot on the Jansen walking mechanism, which provided an excellent balance between stability and mechanical simplicity. This choice allowed us to achieve complex walking motions with minimal actuators, freeing up motors for arm movements and dancing gestures.
-                </p>
-              </div>
-
-              <div class="project-section">
-                <h4>3D Design and Manufacturing</h4>
-                <p>
-                  Using SolidWorks, we created detailed 3D models of all robot components, ensuring proper fit and function before manufacturing. The design was optimized for 3D printing, taking advantage of Columbia University's maker space facilities. Each component was carefully designed with considerations for weight distribution, joint articulation, and servo motor integration.
-                </p>
-              </div>
-
-              <div class="highlight-box">
-                <h5>Key Innovation: Jansen Mechanism</h5>
-                <p>
-                  The Jansen mechanism, invented by Dutch artist Theo Jansen, creates a smooth walking motion using a single rotational input. This biomimetic approach allowed our robot to achieve natural-looking locomotion while maintaining mechanical simplicity and reliability.
-                </p>
-              </div>
-
-              <div class="project-section">
-                <h4>Control System</h4>
-                <p>
-                  The robot's brain consists of a Raspberry Pi that interfaces with multiple servo motors through a custom control board. We developed a Python-based control system that coordinates leg movements with arm gestures to create fluid dancing motions. The programming involved:
-                </p>
-                <ul>
-                  <li>Servo motor calibration and timing synchronization</li>
-                  <li>Motion sequence programming for different dance moves</li>
-                  <li>Sensor integration for balance and orientation feedback</li>
-                  <li>Real-time motor control with smooth transitions</li>
-                </ul>
-              </div>
-
-              <div class="project-section">
-                <h4>Results and Performance</h4>
-                <p>
-                  Michael Jansen successfully demonstrated a variety of dance moves, including coordinated arm and leg movements that created an engaging performance. The robot's unique locomotion style, combined with expressive arm gestures, resulted in a charming and entertaining dancing companion.
-                </p>
-                <p>
-                  <strong>Watch the final performance:</strong> 
-                  <a href="https://youtu.be/erLCOFPFAjo" target="_blank">https://youtu.be/erLCOFPFAjo</a>
-                </p>
+              <!-- Custom project content will go here -->
+              <div id="project-content">
+                {{PROJECT_CONTENT}}
               </div>
             </div>
           </div>
@@ -244,32 +195,34 @@
               <div class="sidebar-widget">
                 <h5>Quick Facts</h5>
                 <ul class="quick-facts">
-                  <li><strong>Status:</strong> <span class="status-completed">Completed</span></li>
-                  <li><strong>Duration:</strong> 4 months</li>
-                  <li><strong>Team Size:</strong> 4 students</li>
-                  <li><strong>My Role:</strong> Mechanical Design & Programming</li>
+                  <li><strong>Status:</strong> <span class="status-{{PROJECT_STATUS}}">{{PROJECT_STATUS}}</span></li>
+                  <li><strong>Duration:</strong> {{PROJECT_DURATION}}</li>
+                  <li><strong>Team Size:</strong> {{PROJECT_TEAM_SIZE}}</li>
+                  <li><strong>My Role:</strong> {{PROJECT_ROLE}}</li>
                 </ul>
               </div>
               
+              {{#PROJECT_ACHIEVEMENTS}}
               <div class="sidebar-widget">
                 <h5>Key Achievements</h5>
                 <ul class="achievements-list">
-                  <li><i class="bx bx-check-circle"></i> Successfully implemented Jansen walking mechanism</li>
-                  <li><i class="bx bx-check-circle"></i> Achieved coordinated multi-DOF dancing motions</li>
-                  <li><i class="bx bx-check-circle"></i> Seamless 3D design to manufacturing workflow</li>
-                  <li><i class="bx bx-check-circle"></i> Real-time servo control programming</li>
+                  {{#.}}
+                  <li><i class="bx bx-check-circle"></i> {{.}}</li>
+                  {{/.}}
                 </ul>
               </div>
+              {{/PROJECT_ACHIEVEMENTS}}
               
+              {{#PROJECT_CHALLENGES}}
               <div class="sidebar-widget">
                 <h5>Challenges Overcome</h5>
                 <ul class="challenges-list">
-                  <li><i class="bx bx-error-circle"></i> Balancing robot stability during complex movements</li>
-                  <li><i class="bx bx-error-circle"></i> Coordinating multiple servo motors synchronously</li>
-                  <li><i class="bx bx-error-circle"></i> Optimizing 3D printed parts for durability</li>
-                  <li><i class="bx bx-error-circle"></i> Programming smooth motion transitions</li>
+                  {{#.}}
+                  <li><i class="bx bx-error-circle"></i> {{.}}</li>
+                  {{/.}}
                 </ul>
               </div>
+              {{/PROJECT_CHALLENGES}}
             </div>
           </div>
         </div>
@@ -281,7 +234,7 @@
       <div class="container">
         <div class="section-title">
           <h2>Related Projects</h2>
-          <p>Other robotics and engineering projects you might find interesting</p>
+          <p>Other projects you might find interesting</p>
         </div>
         
         <div class="row" id="related-projects">
@@ -305,7 +258,6 @@
     </section><!-- End Navigation -->
 
   </main><!-- End #main -->
-
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
