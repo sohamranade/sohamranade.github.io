@@ -26,6 +26,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/custom.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: iPortfolio - v3.0.1
@@ -190,72 +191,75 @@
 
         <div class="section-title">
           <h2>Projects</h2>
-          <p>I have had the oppotunity of working at various Labs accross Bits Pilani, IIT Bombay, and Columbia University. I have worked on variety of topics including design, control, and Deep Learning. Here are a few projects:</p>
+          <p>I have had the opportunity of working at various Labs across BITS Pilani, IIT Bombay, and Columbia University. I have worked on a variety of topics including design, control, and Deep Learning. Here are some of my featured projects:</p>
         </div>
 
-        <div class="row d-none" data-aos="fade-up">
+        <!-- Search and Filter Controls -->
+        <div class="row mb-4" data-aos="fade-up">
+          <div class="col-lg-8 mx-auto">
+            <div class="search-filter-container">
+              <div class="search-box mb-3">
+                <div class="input-group">
+                  <input type="text" id="projectSearch" class="form-control" placeholder="Search projects by title, technology, or tag...">
+                  <div class="input-group-append">
+                    <span class="input-group-text"><i class="bx bx-search"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" data-aos="fade-up">
           <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
+            <ul id="portfolio-filters" class="portfolio-filters">
+              <!-- Filters will be dynamically generated -->
             </ul>
           </div>
         </div>
 
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+        <!-- Projects Container -->
+        <div class="row portfolio-container" id="projectsContainer" data-aos="fade-up" data-aos-delay="100">
+          <!-- Projects will be dynamically loaded here -->
+        </div>
 
-          <div class="col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="Media/glamourshot.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="Media/sideview.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Michael Jansen: The Dancing Robot"><i class="bx bx-plus"></i></a>
-                <a href="Michael_jansen.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
+        <!-- No Results Message -->
+        <div class="row" id="noResults" style="display: none;">
+          <div class="col-12 text-center">
+            <div class="no-results-message">
+              <i class="bx bx-search-alt-2 mb-3" style="font-size: 3rem; color: #149ddd;"></i>
+              <h4>No projects found</h4>
+              <p>Try adjusting your search terms or filters.</p>
             </div>
           </div>
+        </div>
 
-          <div class="col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="Media/Mapping/turtle-bot.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="Media/Mapping/turtle-bot.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Robot mapping using Indoor Positioning Systems"><i class="bx bx-plus"></i></a>
-                <a href="mapping.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
+        <!-- Featured Projects Stats -->
+        <div class="row mt-5 project-stats" data-aos="fade-up">
+          <div class="col-md-3 col-6 text-center">
+            <div class="stats-item">
+              <h3 id="totalProjects">0</h3>
+              <p>Total Projects</p>
             </div>
           </div>
-
-          <div class="col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="Media/Robocon/main-pic.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="Media/Robocon/robots.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Robocon 2017: The All-India Robotics competition"><i class="bx bx-plus"></i></a>
-                <a href="robocon.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
+          <div class="col-md-3 col-6 text-center">
+            <div class="stats-item">
+              <h3 id="roboticsProjects">0</h3>
+              <p>Robotics Projects</p>
             </div>
           </div>
-
-          <div class="col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="Media/Quadcopter/quad.JPG" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="Media/Quadcopter/quad2.JPG" data-gallery="portfolioGallery" class="portfolio-lightbox" title="A Quadcopter controller to simulate its behaviour"><i class="bx bx-plus"></i></a>
-                <a href="quadcopter.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
+          <div class="col-md-3 col-6 text-center">
+            <div class="stats-item">
+              <h3 id="mlProjects">0</h3>
+              <p>ML Projects</p>
             </div>
           </div>
-          
-          <div class="col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="./Media/DIP/facemask.png" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="./Media/DIP/algo.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Face Mask Detection using CNN"><i class="bx bx-plus"></i></a>
-                <a href="dip.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
+          <div class="col-md-3 col-6 text-center">
+            <div class="stats-item">
+              <h3 id="completedProjects">0</h3>
+              <p>Completed</p>
             </div>
           </div>
-
         </div>
 
       </div>
@@ -341,8 +345,14 @@
   <script src="assets/vendor/typed.js/typed.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
 
+  <!-- Projects Data -->
+  <script src="assets/js/projects-data.js"></script>
+  
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  
+  <!-- Custom Portfolio JS -->
+  <script src="assets/js/portfolio.js"></script>
 
 </body>
 

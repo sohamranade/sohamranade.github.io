@@ -1,0 +1,370 @@
+/**
+ * Custom CSS Enhancements for Personal Portfolio
+ * Enhanced styling and modern features
+ */
+
+/* ===== Enhanced Search & Filter Styles ===== */
+.search-filter-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.search-box .form-control {
+  border: 2px solid #e3e6f0;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.search-box .form-control:focus {
+  border-color: #149ddd;
+  box-shadow: 0 0 0 0.2rem rgba(20, 157, 221, 0.25);
+}
+
+.search-box .input-group-text {
+  background: #149ddd;
+  border: 2px solid #149ddd;
+  color: white;
+  border-radius: 0 10px 10px 0;
+}
+
+/* ===== Enhanced Portfolio Filters ===== */
+.portfolio-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.portfolio-filters li {
+  background: rgba(255, 255, 255, 0.9);
+  color: #272829;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.portfolio-filters li:hover,
+.portfolio-filters li.filter-active {
+  background: #149ddd;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(20, 157, 221, 0.3);
+}
+
+.portfolio-filters li i {
+  font-size: 18px;
+}
+
+/* ===== Enhanced Project Cards ===== */
+.portfolio-item {
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+}
+
+.portfolio-wrap {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.portfolio-wrap:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.portfolio-wrap img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-wrap:hover img {
+  transform: scale(1.05);
+}
+
+.portfolio-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 20px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.portfolio-wrap:hover .portfolio-info {
+  transform: translateY(0);
+}
+
+.portfolio-info h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.portfolio-info p {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 10px;
+}
+
+.portfolio-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.portfolio-tag {
+  background: rgba(20, 157, 221, 0.8);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.portfolio-links {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.portfolio-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(20, 157, 221, 0.9);
+  color: white;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.portfolio-links a:hover {
+  background: #149ddd;
+  transform: scale(1.1);
+  color: white;
+}
+
+/* ===== Project Statistics ===== */
+.project-stats {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  padding: 30px;
+  margin-top: 40px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stats-item {
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.stats-item:hover {
+  transform: translateY(-5px);
+}
+
+.stats-item h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #149ddd;
+  margin-bottom: 10px;
+  counter-reset: stats-counter;
+}
+
+.stats-item p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #666;
+  margin: 0;
+}
+
+/* ===== No Results Message ===== */
+.no-results-message {
+  padding: 60px 20px;
+  text-align: center;
+  color: #666;
+}
+
+.no-results-message h4 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* ===== Loading Animation ===== */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #149ddd;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== Enhanced Hero Section ===== */
+#hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('../img/cover_pic.jpg') center center;
+  background-size: cover;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== Enhanced About Section ===== */
+.about img {
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.about img:hover {
+  transform: scale(1.02);
+}
+
+/* ===== Enhanced Skills Section ===== */
+.skills .skill-item {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.skills .skill-item:hover {
+  transform: translateY(-5px);
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .portfolio-filters {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .portfolio-filters li {
+    width: 100%;
+    max-width: 200px;
+    justify-content: center;
+  }
+  
+  .search-filter-container {
+    padding: 15px;
+  }
+  
+  .project-stats {
+    padding: 20px;
+  }
+  
+  .stats-item h3 {
+    font-size: 2rem;
+  }
+}
+
+/* ===== Animation Classes ===== */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Enhanced Testimonials ===== */
+.testimonials .testimonial-item {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Enhanced Contact Section ===== */
+.contact .info {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.contact .info i {
+  color: #149ddd;
+  font-size: 24px;
+}
+
+/* ===== Utility Classes ===== */
+.text-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
