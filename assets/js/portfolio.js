@@ -8,34 +8,56 @@ class PortfolioManager {
     this.currentFilter = 'all';
     this.currentSearchTerm = '';
     this.isLoading = false;
+    this.initialized = false;
     
     this.init();
   }
 
   init() {
-    // Wait for DOM to be loaded
+    // Wait for DOM to be loaded and ensure projectsData is available
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => this.setup());
+      document.addEventListener('DOMContentLoaded', () => this.delayedSetup());
     } else {
-      this.setup();
+      this.delayedSetup();
     }
   }
 
+  delayedSetup() {
+    // Add a small delay to ensure all scripts are loaded
+    setTimeout(() => {
+      if (typeof projectsData !== 'undefined') {
+        this.setup();
+      } else {
+        // Retry if projectsData is not yet available
+        setTimeout(() => this.delayedSetup(), 100);
+      }
+    }, 100);
+  }
+
   setup() {
-    this.loadFilters();
-    this.loadProjects();
-    this.setupEventListeners();
-    this.updateStats();
+    if (this.initialized) return;
     
-    // Initialize AOS for new elements
-    if (typeof AOS !== 'undefined') {
-      AOS.refresh();
+    try {
+      this.loadFilters();
+      this.loadProjects();
+      this.setupEventListeners();
+      this.updateStats();
+      this.initialized = true;
+      
+      // Initialize AOS for new elements
+      if (typeof AOS !== 'undefined') {
+        AOS.refresh();
+      }
+    } catch (error) {
+      console.error('Portfolio setup error:', error);
+      // Retry setup after a delay
+      setTimeout(() => this.setup(), 500);
     }
   }
 
   loadFilters() {
     const filtersContainer = document.getElementById('portfolio-filters');
-    if (!filtersContainer) return;
+    if (!filtersContainer || !projectsData.categories) return;
 
     const filters = projectsData.categories.map(category => `
       <li class="${category.id === 'all' ? 'filter-active' : ''}" 
@@ -52,7 +74,7 @@ class PortfolioManager {
     const container = document.getElementById('projectsContainer');
     const noResults = document.getElementById('noResults');
     
-    if (!container) return;
+    if (!container || !projectsData.projects) return;
 
     // Show loading state
     this.showLoading(container);
@@ -70,43 +92,49 @@ class PortfolioManager {
 
     // Generate HTML for filtered projects
     setTimeout(() => {
-      if (filteredProjects.length === 0) {
-        container.innerHTML = '';
-        noResults.style.display = 'block';
-      } else {
-        const projectsHTML = filteredProjects.map(project => this.createProjectCard(project)).join('');
-        container.innerHTML = projectsHTML;
-        noResults.style.display = 'none';
-        
-        // Initialize lightbox for new elements
-        this.initializeLightbox();
+      try {
+        if (filteredProjects.length === 0) {
+          container.innerHTML = '';
+          if (noResults) noResults.style.display = 'block';
+        } else {
+          const projectsHTML = filteredProjects.map(project => this.createProjectCard(project)).join('');
+          container.innerHTML = projectsHTML;
+          if (noResults) noResults.style.display = 'none';
+          
+          // Initialize lightbox for new elements
+          this.initializeLightbox();
+          
+          // Add animation classes with staggered timing
+          container.querySelectorAll('.portfolio-item').forEach((item, index) => {
+            setTimeout(() => {
+              item.classList.add('fade-in');
+            }, index * 150);
+          });
+        }
+      } catch (error) {
+        console.error('Error loading projects:', error);
+        container.innerHTML = '<div class="col-12 text-center"><p>Error loading projects. Please refresh the page.</p></div>';
       }
-      
-      // Add animation classes
-      container.querySelectorAll('.portfolio-item').forEach((item, index) => {
-        setTimeout(() => {
-          item.classList.add('fade-in');
-        }, index * 100);
-      });
-      
     }, 300); // Small delay for loading effect
   }
 
   createProjectCard(project) {
-    const tags = project.tags.slice(0, 3).map(tag => 
+    if (!project) return '';
+    
+    const tags = (project.tags || []).slice(0, 3).map(tag => 
       `<span class="portfolio-tag">${tag}</span>`
     ).join('');
 
-    const technologies = project.technologies.slice(0, 2).join(', ');
+    const technologies = (project.technologies || []).slice(0, 2).join(', ');
 
     return `
       <div class="col-lg-4 col-md-6 portfolio-item filter-${project.category}" data-aos="fade-up">
         <div class="portfolio-wrap">
-          <img src="${project.thumbnail}" class="img-fluid" alt="${project.title}">
+          <img src="${project.thumbnail || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgZmlsbD0iIzZjNzU3ZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlByb2plY3QgSW1hZ2U8L3RleHQ+Cjwvc3ZnPgo='}" class="img-fluid" alt="${project.title}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgZmlsbD0iIzZjNzU3ZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlByb2plY3QgSW1hZ2U8L3RleHQ+Cjwvc3ZnPgo='">
           
           <div class="portfolio-info">
             <h4>${project.title}</h4>
-            <p>${project.shortDescription}</p>
+            <p>${project.shortDescription || ''}</p>
             <div class="portfolio-tags">
               ${tags}
             </div>
@@ -118,10 +146,10 @@ class PortfolioManager {
           <div class="portfolio-links">
             ${project.githubLink ? `<a href="${project.githubLink}" target="_blank" title="GitHub"><i class="bx bxl-github"></i></a>` : ''}
             ${project.liveDemo ? `<a href="${project.liveDemo}" target="_blank" title="Live Demo"><i class="bx bx-link-external"></i></a>` : ''}
-            <a href="${project.images[0]}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="${project.title}">
+            <a href="${(project.images && project.images[0]) || project.thumbnail}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="${project.title}">
               <i class="bx bx-plus"></i>
             </a>
-            <a href="${project.detailPage}" title="More Details">
+            <a href="${project.detailPage || '#'}" title="More Details">
               <i class="bx bx-link"></i>
             </a>
           </div>
@@ -177,8 +205,11 @@ class PortfolioManager {
   showLoading(container) {
     container.innerHTML = `
       <div class="col-12">
-        <div class="loading-spinner">
-          <div class="spinner"></div>
+        <div class="loading-spinner text-center">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <p class="mt-3">Loading projects...</p>
         </div>
       </div>
     `;
@@ -187,13 +218,19 @@ class PortfolioManager {
   initializeLightbox() {
     // Re-initialize GLightbox for dynamically loaded content
     if (typeof GLightbox !== 'undefined') {
-      const lightbox = GLightbox({
-        selector: '.portfolio-lightbox'
-      });
+      try {
+        const lightbox = GLightbox({
+          selector: '.portfolio-lightbox'
+        });
+      } catch (error) {
+        console.warn('GLightbox initialization failed:', error);
+      }
     }
   }
 
   updateStats() {
+    if (!projectsData.projects) return;
+    
     const projects = projectsData.projects;
     
     // Update statistics
@@ -223,6 +260,8 @@ class PortfolioManager {
   }
 
   animateCounter(element, target) {
+    if (!element || target === undefined) return;
+    
     let current = 0;
     const increment = target / 30;
     const timer = setInterval(() => {
@@ -280,8 +319,28 @@ class PortfolioManager {
   }
 }
 
-// Initialize portfolio manager
-const portfolioManager = new PortfolioManager();
+// Initialize portfolio manager with error handling
+let portfolioManager;
 
-// Export for global access
-window.portfolioManager = portfolioManager;
+function initializePortfolio() {
+  try {
+    if (typeof projectsData !== 'undefined') {
+      portfolioManager = new PortfolioManager();
+      window.portfolioManager = portfolioManager;
+    } else {
+      // Retry initialization if projectsData is not available
+      setTimeout(initializePortfolio, 200);
+    }
+  } catch (error) {
+    console.error('Portfolio initialization failed:', error);
+    // Retry after a delay
+    setTimeout(initializePortfolio, 500);
+  }
+}
+
+// Start initialization when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializePortfolio);
+} else {
+  initializePortfolio();
+}

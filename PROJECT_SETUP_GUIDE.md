@@ -88,7 +88,7 @@ To add a new category, edit the `categories` array in `projects-data.js`.
 - `in-progress` - Currently working on
 - `planned` - Future projects
 
-## Media Guidelines
+## media Guidelines
 
 ### Image Specifications
 - **Thumbnail**: 400x250px (16:10 ratio) for consistent project cards
@@ -96,7 +96,7 @@ To add a new category, edit the `categories` array in `projects-data.js`.
 - **Format**: JPG or PNG
 - **File Size**: Keep under 2MB each for good loading performance
 
-### Recommended Media Structure
+### Recommended media Structure
 ```
 media/
 ├── ProjectName/
