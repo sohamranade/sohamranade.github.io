@@ -571,26 +571,27 @@
 
 /* ===== Compact Project Stats (above projects) ===== */
 .project-stats-compact {
-  margin-bottom: 10px;
-  padding: 0 0 10px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  box-shadow: none;
+  margin-bottom: 20px;
+  padding: 15px 0;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .stats-item-compact {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   font-size: 1rem;
   color: #149ddd;
   font-weight: 600;
-  background: none;
-  box-shadow: none;
-  padding: 0;
-  margin: 0 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 15px 10px;
+  margin: 5px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(20, 157, 221, 0.2);
 }
 
 .stats-item-compact span {
@@ -604,18 +605,29 @@
   font-size: 0.85rem;
   color: #666;
   font-weight: 500;
+  margin-top: 5px;
+}
+
+.stats-item-compact:hover {
+  background: rgba(20, 157, 221, 0.1);
+  border-color: #149ddd;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(20, 157, 221, 0.2);
 }
 
 @media (max-width: 768px) {
   .project-stats-compact {
-    flex-wrap: wrap;
-    gap: 8px;
+    padding: 10px 0;
   }
   .stats-item-compact {
-    font-size: 0.95rem;
-    margin: 0 4px 4px 0;
+    font-size: 0.9rem;
+    padding: 12px 8px;
+    margin: 3px;
   }
   .stats-item-compact span {
-    font-size: 1rem;
+    font-size: 1.1rem;
+  }
+  .stats-item-compact small {
+    font-size: 0.8rem;
   }
 }
