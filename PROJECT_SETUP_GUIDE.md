@@ -20,7 +20,7 @@ sohamranade.github.io/
 │       ├── projects-data.js   # ✨ PROJECT DATA - Edit this to add projects
 │       ├── portfolio.js       # Dynamic project loading
 │       └── project-detail.js  # Project page functionality
-├── Media/                     # Project images and media
+├── media/                     # Project images and media
 ├── index.html                 # Enhanced main page
 ├── project-template.html      # Template for new project pages
 └── [project-name].html        # Individual project pages
@@ -40,11 +40,11 @@ Edit `assets/js/projects-data.js` and add a new project object to the `projects`
   fullDescription: "Detailed project description for the project page",
   category: "robotics",                    // Category: robotics, machine-learning, control-systems, web-development
   tags: ["Python", "AI", "Research"],     // Technology/topic tags
-  thumbnail: "Media/MyProject/thumb.jpg", // Main project image (relative path)
+  thumbnail: "media/MyProject/thumb.jpg", // Main project image (relative path)
   images: [                               // Gallery images for project page
-    "Media/MyProject/image1.jpg",
-    "Media/MyProject/image2.jpg",
-    "Media/MyProject/image3.jpg"
+    "media/MyProject/image1.jpg",
+    "media/MyProject/image2.jpg",
+    "media/MyProject/image3.jpg"
   ],
   detailPage: "my-new-project.html",      // Project detail page filename
   technologies: ["Python", "TensorFlow", "OpenCV"], // Tech stack
@@ -58,7 +58,7 @@ Edit `assets/js/projects-data.js` and add a new project object to the `projects`
 
 ### Step 2: Create Project Images
 
-1. Create a folder in `Media/` for your project (e.g., `Media/MyProject/`)
+1. Create a folder in `media/` for your project (e.g., `media/MyProject/`)
 2. Add your project images to this folder
 3. Ensure you have at least one main thumbnail image
 
@@ -98,7 +98,7 @@ To add a new category, edit the `categories` array in `projects-data.js`.
 
 ### Recommended Media Structure
 ```
-Media/
+media/
 ├── ProjectName/
 │   ├── thumbnail.jpg      # Main project image
 │   ├── gallery-1.jpg      # Additional project images
@@ -123,8 +123,8 @@ document.getElementById('project-content').innerHTML +=
 
 // Add an image gallery
 const images = [
-  {src: 'Media/Project/img1.jpg', alt: 'Description', caption: 'Caption'},
-  {src: 'Media/Project/img2.jpg', alt: 'Description', caption: 'Caption'}
+  {src: 'media/Project/img1.jpg', alt: 'Description', caption: 'Caption'},
+  {src: 'media/Project/img2.jpg', alt: 'Description', caption: 'Caption'}
 ];
 document.getElementById('project-content').innerHTML += 
   addImageGallery(images, 'Design Process');
@@ -207,7 +207,7 @@ The website automatically enables:
 
 ### Images Not Loading
 1. Verify image file paths in `projects-data.js`
-2. Check that images exist in the `Media/` folder
+2. Check that images exist in the `media/` folder
 3. Ensure image file extensions match exactly (.jpg vs .JPG)
 
 ### Styling Issues
@@ -241,7 +241,7 @@ For technical issues, check the browser console for error messages and verify al
 
 **Quick Start Checklist:**
 - [ ] Add project data to `projects-data.js`
-- [ ] Upload project images to `Media/ProjectName/`
+- [ ] Upload project images to `media/ProjectName/`
 - [ ] Create or copy project detail page
 - [ ] Test on local browser
 - [ ] Deploy to GitHub Pages
