@@ -451,7 +451,7 @@
 }
 
 /* ===== Responsive Design ===== */
-@Media (max-width: 768px) {
+@media (max-width: 768px) {
   .portfolio-filters {
     flex-direction: column;
     align-items: center;
@@ -531,7 +531,7 @@
 }
 
 /* ===== Responsive Design for Skills ===== */
-@Media (max-width: 768px) {
+@media (max-width: 768px) {
   .skills .skill-category {
     margin-bottom: 20px;
     padding: 20px;
@@ -596,10 +596,11 @@
 /* Portfolio item hover effects */
 .portfolio-wrap {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   border-radius: 8px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  margin-bottom: 20px;
 }
 
 .portfolio-wrap:hover {
@@ -612,6 +613,7 @@
   height: 250px;
   object-fit: cover;
   transition: transform 0.3s ease;
+  border-radius: 8px 8px 0 0;
 }
 
 .portfolio-wrap:hover img {
@@ -620,18 +622,20 @@
 
 .portfolio-info {
   position: absolute;
-  bottom: 0;
+  bottom: -100%;
   left: 0;
   right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
   color: white;
   padding: 20px;
-  transform: translateY(100%);
-  transition: transform 0.3s ease;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+  border-radius: 0 0 8px 8px;
+  z-index: 10;
 }
 
 .portfolio-wrap:hover .portfolio-info {
-  transform: translateY(0);
+  bottom: 0;
 }
 
 .portfolio-info h4 {
@@ -671,6 +675,7 @@
   opacity: 0;
   transform: translateX(20px);
   transition: all 0.3s ease;
+  z-index: 15;
 }
 
 .portfolio-wrap:hover .portfolio-links {
@@ -796,7 +801,7 @@
 }
 
 /* Responsive adjustments */
-@Media (max-width: 768px) {
+@media (max-width: 768px) {
   .portfolio-filters {
     flex-direction: column;
     align-items: center;
@@ -822,11 +827,30 @@
   .portfolio-info p {
     font-size: 0.8rem;
   }
+  
+  /* Ensure portfolio info is visible on mobile */
+  .portfolio-wrap:hover .portfolio-info {
+    bottom: 0;
+  }
 }
 
 /* Ensure proper spacing */
 .portfolio-container {
   margin-top: 30px;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+/* Fix for portfolio item overflow */
+.portfolio-item .portfolio-wrap {
+  overflow: visible;
+}
+
+/* Ensure portfolio info is fully visible on hover */
+.portfolio-wrap:hover {
+  z-index: 5;
 }
 
 /* Animation delays for staggered loading */
