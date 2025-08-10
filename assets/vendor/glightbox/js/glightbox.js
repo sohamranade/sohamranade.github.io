@@ -1718,7 +1718,7 @@
   }();
 
   function slideImage(slide, data, index, callback) {
-    var slideMedia = slide.querySelector('.gslide-media');
+    var slidemedia = slide.querySelector('.gslide-media');
     var img = new Image();
     var titleID = 'gSlideTitle_' + index;
     var textID = 'gSlideDesc_' + index;
@@ -1738,7 +1738,7 @@
       img.setAttribute('aria-describedby', textID);
     }
 
-    slideMedia.insertBefore(img, slideMedia.firstChild);
+    slidemedia.insertBefore(img, slidemedia.firstChild);
     return;
   }
 
@@ -1747,10 +1747,10 @@
 
     var slideContainer = slide.querySelector('.ginner-container');
     var videoID = 'gvideo' + index;
-    var slideMedia = slide.querySelector('.gslide-media');
+    var slidemedia = slide.querySelector('.gslide-media');
     var videoPlayers = this.getAllPlayers();
     addClass(slideContainer, 'gvideo-container');
-    slideMedia.insertBefore(createHTML('<div class="gvideo-wrapper"></div>'), slideMedia.firstChild);
+    slidemedia.insertBefore(createHTML('<div class="gvideo-wrapper"></div>'), slidemedia.firstChild);
     var videoWrapper = slide.querySelector('.gvideo-wrapper');
     injectAssets(this.settings.plyr.css, 'Plyr');
     var url = data.href;
@@ -1763,7 +1763,7 @@
       protocol = 'http';
     }
 
-    slideMedia.style.maxWidth = data.width;
+    slidemedia.style.maxWidth = data.width;
     injectAssets(this.settings.plyr.js, 'Plyr', function () {
       if (url.match(/vimeo\.com\/([0-9]*)/)) {
         var vimeoID = /vimeo.*\/(\d+)/i.exec(url);
@@ -1828,8 +1828,8 @@
           callback();
         }
       });
-      player.on('enterfullscreen', handleMediaFullScreen);
-      player.on('exitfullscreen', handleMediaFullScreen);
+      player.on('enterfullscreen', handlemediaFullScreen);
+      player.on('exitfullscreen', handlemediaFullScreen);
     });
   }
 
@@ -1847,7 +1847,7 @@
     return videoID;
   }
 
-  function handleMediaFullScreen(event) {
+  function handlemediaFullScreen(event) {
     var media = closest(event.target, '.gslide-media');
 
     if (event.type == 'enterfullscreen') {
@@ -1862,7 +1862,7 @@
   function slideInline(slide, data, index, callback) {
     var _this = this;
 
-    var slideMedia = slide.querySelector('.gslide-media');
+    var slidemedia = slide.querySelector('.gslide-media');
     var hash = has(data, 'href') && data.href ? data.href.split('#').pop().trim() : false;
     var content = has(data, 'content') && data.content ? data.content : false;
     var innerContent;
@@ -1903,11 +1903,11 @@
       return false;
     }
 
-    slideMedia.style.height = data.height;
-    slideMedia.style.width = data.width;
-    slideMedia.appendChild(innerContent);
+    slidemedia.style.height = data.height;
+    slidemedia.style.width = data.width;
+    slidemedia.appendChild(innerContent);
     this.events['inlineclose' + hash] = addEvent('click', {
-      onElement: slideMedia.querySelectorAll('.gtrigger-close'),
+      onElement: slidemedia.querySelectorAll('.gtrigger-close'),
       withCallback: function withCallback(e) {
         e.preventDefault();
 
@@ -1923,14 +1923,14 @@
   }
 
   function slideIframe(slide, data, index, callback) {
-    var slideMedia = slide.querySelector('.gslide-media');
+    var slidemedia = slide.querySelector('.gslide-media');
     var iframe = createIframe({
       url: data.href,
       callback: callback
     });
-    slideMedia.parentNode.style.maxWidth = data.width;
-    slideMedia.parentNode.style.height = data.height;
-    slideMedia.appendChild(iframe);
+    slidemedia.parentNode.style.maxWidth = data.width;
+    slidemedia.parentNode.style.height = data.height;
+    slidemedia.appendChild(iframe);
     return;
   }
 
@@ -2170,7 +2170,7 @@
 
         var type = slideConfig.type;
         var position = slideConfig.descPosition;
-        var slideMedia = slide.querySelector('.gslide-media');
+        var slidemedia = slide.querySelector('.gslide-media');
         var slideTitle = slide.querySelector('.gslide-title');
         var slideText = slide.querySelector('.gslide-desc');
         var slideDesc = slide.querySelector('.gdesc-inner');
@@ -2218,11 +2218,11 @@
             slideText.parentNode.removeChild(slideText);
           }
 
-          addClass(slideMedia.parentNode, "desc-".concat(position));
+          addClass(slidemedia.parentNode, "desc-".concat(position));
           addClass(slideDesc.parentNode, "description-".concat(position));
         }
 
-        addClass(slideMedia, "gslide-".concat(type));
+        addClass(slidemedia, "gslide-".concat(type));
         addClass(slide, 'loaded');
 
         if (type === 'video') {
@@ -2831,7 +2831,7 @@
       value: function slideAnimateIn(slide, first) {
         var _this4 = this;
 
-        var slideMedia = slide.querySelector('.gslide-media');
+        var slidemedia = slide.querySelector('.gslide-media');
         var slideDesc = slide.querySelector('.gslide-description');
         var prevData = {
           index: this.prevActiveSlideIndex,
@@ -2852,7 +2852,7 @@
           player: this.getSlidePlayerInstance(this.index)
         };
 
-        if (slideMedia.offsetWidth > 0 && slideDesc) {
+        if (slidemedia.offsetWidth > 0 && slideDesc) {
           hide(slideDesc);
 
           slideDesc.style.display = '';
