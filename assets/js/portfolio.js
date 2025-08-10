@@ -1,121 +1,48 @@
 /**
- * Dynamic Portfolio Management
- * Handles project loading, filtering, and search functionality
+ * Simple Portfolio Display
+ * Loads and displays project tiles with links to detail pages
  */
 
-class PortfolioManager {
+class SimplePortfolio {
   constructor() {
-    this.currentFilter = 'all';
-    this.currentSearchTerm = '';
-    this.isLoading = false;
-    this.initialized = false;
-    
     this.init();
   }
 
   init() {
     // Wait for DOM to be loaded and ensure projectsData is available
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => this.delayedSetup());
+      document.addEventListener('DOMContentLoaded', () => this.setup());
     } else {
-      this.delayedSetup();
+      this.setup();
     }
-  }
-
-  delayedSetup() {
-    // Add a small delay to ensure all scripts are loaded
-    setTimeout(() => {
-      if (typeof projectsData !== 'undefined') {
-        this.setup();
-      } else {
-        // Retry if projectsData is not yet available
-        setTimeout(() => this.delayedSetup(), 100);
-      }
-    }, 100);
   }
 
   setup() {
-    if (this.initialized) return;
-    
     try {
-      this.loadFilters();
-      this.loadProjects();
-      this.setupEventListeners();
-      this.updateStats();
-      this.initialized = true;
-      
-      // Initialize AOS for new elements
-      if (typeof AOS !== 'undefined') {
-        AOS.refresh();
+      if (typeof projectsData !== 'undefined') {
+        this.loadProjects();
+        // Initialize AOS for new elements
+        if (typeof AOS !== 'undefined') {
+          AOS.refresh();
+        }
+      } else {
+        // Retry if projectsData is not yet available
+        setTimeout(() => this.setup(), 100);
       }
     } catch (error) {
       console.error('Portfolio setup error:', error);
-      // Retry setup after a delay
-      setTimeout(() => this.setup(), 500);
     }
   }
 
-  loadFilters() {
-    const filtersContainer = document.getElementById('portfolio-filters');
-    if (!filtersContainer || !projectsData.categories) return;
-
-    const filters = projectsData.categories.map(category => `
-      <li class="${category.id === 'all' ? 'filter-active' : ''}" 
-          data-filter="${category.id}">
-        <i class="bx ${category.icon}"></i>
-        ${category.name}
-      </li>
-    `).join('');
-
-    filtersContainer.innerHTML = filters;
-  }
-
-  loadProjects(searchTerm = '', category = 'all') {
+  loadProjects() {
     const container = document.getElementById('projectsContainer');
-    const noResults = document.getElementById('noResults');
-    
     if (!container || !projectsData.projects) return;
 
-    // Show loading state
-    this.showLoading(container);
-
-    // Filter projects based on search and category
-    let filteredProjects = projectsData.projects;
+    const projectsHTML = projectsData.projects.map(project => this.createProjectCard(project)).join('');
+    container.innerHTML = projectsHTML;
     
-    if (searchTerm) {
-      filteredProjects = projectsData.searchProjects(searchTerm);
-    }
-    
-    if (category !== 'all') {
-      filteredProjects = filteredProjects.filter(project => project.category === category);
-    }
-
-    // Generate HTML for filtered projects
-    setTimeout(() => {
-      try {
-        if (filteredProjects.length === 0) {
-          container.innerHTML = '';
-          if (noResults) noResults.style.display = 'block';
-        } else {
-          const projectsHTML = filteredProjects.map(project => this.createProjectCard(project)).join('');
-          container.innerHTML = projectsHTML;
-          if (noResults) noResults.style.display = 'none';
-          
-          // Initialize lightbox for new elements
-          this.initializeLightbox();
-          
-          // Add animation classes with staggered timing
-          container.querySelectorAll('.portfolio-item').forEach((item, index) => {
-            setTimeout(() => {
-              item.classList.add('fade-in');
-            }, index * 150);
-          });
-        }
-      } catch (error) {
-        console.error('Error loading projects:', error);
-        container.innerHTML = '<div class="col-12 text-center"><p>Error loading projects. Please refresh the page.</p></div>';
-      }
-    }, 300); // Small delay for loading effect
+    // Initialize lightbox for project images
+    this.initializeLightbox();
   }
 
   createProjectCard(project) {
@@ -128,7 +55,7 @@ class PortfolioManager {
     const technologies = (project.technologies || []).slice(0, 2).join(', ');
 
     return `
-      <div class="col-lg-4 col-md-6 portfolio-item filter-${project.category}" data-aos="fade-up">
+      <div class="col-lg-4 col-md-6 portfolio-item" data-aos="fade-up">
         <div class="portfolio-wrap">
           <img src="${project.thumbnail || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgZmlsbD0iIzZjNzU3ZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlByb2plY3QgSW1hZ2U8L3RleHQ+Cjwvc3ZnPgo='}" class="img-fluid" alt="${project.title}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgZmlsbD0iIzZjNzU3ZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlByb2plY3QgSW1hZ2U8L3RleHQ+Cjwvc3ZnPgo='">
           
@@ -158,65 +85,8 @@ class PortfolioManager {
     `;
   }
 
-  setupEventListeners() {
-    // Search functionality
-    const searchInput = document.getElementById('projectSearch');
-    if (searchInput) {
-      let searchTimeout;
-      searchInput.addEventListener('input', (e) => {
-        clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(() => {
-          this.currentSearchTerm = e.target.value.toLowerCase();
-          this.loadProjects(this.currentSearchTerm, this.currentFilter);
-        }, 300);
-      });
-    }
-
-    // Filter functionality
-    const filterContainer = document.getElementById('portfolio-filters');
-    if (filterContainer) {
-      filterContainer.addEventListener('click', (e) => {
-        if (e.target.tagName === 'LI' || e.target.parentElement.tagName === 'LI') {
-          const filterItem = e.target.tagName === 'LI' ? e.target : e.target.parentElement;
-          const filter = filterItem.dataset.filter;
-          
-          // Update active filter
-          filterContainer.querySelectorAll('li').forEach(li => li.classList.remove('filter-active'));
-          filterItem.classList.add('filter-active');
-          
-          this.currentFilter = filter;
-          this.loadProjects(this.currentSearchTerm, this.currentFilter);
-        }
-      });
-    }
-
-    // Keyboard shortcuts
-    document.addEventListener('keydown', (e) => {
-      if (e.ctrlKey && e.key === '/') {
-        e.preventDefault();
-        const searchInput = document.getElementById('projectSearch');
-        if (searchInput) {
-          searchInput.focus();
-        }
-      }
-    });
-  }
-
-  showLoading(container) {
-    container.innerHTML = `
-      <div class="col-12">
-        <div class="loading-spinner text-center">
-          <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
-          <p class="mt-3">Loading projects...</p>
-        </div>
-      </div>
-    `;
-  }
-
   initializeLightbox() {
-    // Re-initialize GLightbox for dynamically loaded content
+    // Initialize GLightbox for project images
     if (typeof GLightbox !== 'undefined') {
       try {
         const lightbox = GLightbox({
@@ -227,120 +97,25 @@ class PortfolioManager {
       }
     }
   }
-
-  updateStats() {
-    if (!projectsData.projects) return;
-    
-    const projects = projectsData.projects;
-    
-    // Update statistics
-    const totalProjects = document.getElementById('totalProjects');
-    const roboticsProjects = document.getElementById('roboticsProjects');
-    const mlProjects = document.getElementById('mlProjects');
-    const completedProjects = document.getElementById('completedProjects');
-
-    if (totalProjects) {
-      this.animateCounter(totalProjects, projects.length);
-    }
-    
-    if (roboticsProjects) {
-      const roboticsCount = projects.filter(p => p.category === 'robotics').length;
-      this.animateCounter(roboticsProjects, roboticsCount);
-    }
-    
-    if (mlProjects) {
-      const mlCount = projects.filter(p => p.category === 'machine-learning').length;
-      this.animateCounter(mlProjects, mlCount);
-    }
-    
-    if (completedProjects) {
-      const completedCount = projects.filter(p => p.status === 'completed').length;
-      this.animateCounter(completedProjects, completedCount);
-    }
-  }
-
-  animateCounter(element, target) {
-    if (!element || target === undefined) return;
-    
-    let current = 0;
-    const increment = target / 30;
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        current = target;
-        clearInterval(timer);
-      }
-      element.textContent = Math.floor(current);
-    }, 50);
-  }
-
-  // Public methods for external use
-  filterProjects(category) {
-    this.currentFilter = category;
-    this.loadProjects(this.currentSearchTerm, this.currentFilter);
-    
-    // Update active filter
-    const filterContainer = document.getElementById('portfolio-filters');
-    if (filterContainer) {
-      filterContainer.querySelectorAll('li').forEach(li => {
-        li.classList.toggle('filter-active', li.dataset.filter === category);
-      });
-    }
-  }
-
-  searchProjects(term) {
-    this.currentSearchTerm = term;
-    this.loadProjects(this.currentSearchTerm, this.currentFilter);
-    
-    // Update search input
-    const searchInput = document.getElementById('projectSearch');
-    if (searchInput) {
-      searchInput.value = term;
-    }
-  }
-
-  resetFilters() {
-    this.currentFilter = 'all';
-    this.currentSearchTerm = '';
-    this.loadProjects();
-    
-    // Reset UI
-    const searchInput = document.getElementById('projectSearch');
-    if (searchInput) {
-      searchInput.value = '';
-    }
-    
-    const filterContainer = document.getElementById('portfolio-filters');
-    if (filterContainer) {
-      filterContainer.querySelectorAll('li').forEach(li => {
-        li.classList.toggle('filter-active', li.dataset.filter === 'all');
-      });
-    }
-  }
 }
 
-// Initialize portfolio manager with error handling
-let portfolioManager;
-
-function initializePortfolio() {
+// Initialize simple portfolio
+function initializeSimplePortfolio() {
   try {
     if (typeof projectsData !== 'undefined') {
-      portfolioManager = new PortfolioManager();
-      window.portfolioManager = portfolioManager;
+      new SimplePortfolio();
     } else {
       // Retry initialization if projectsData is not available
-      setTimeout(initializePortfolio, 200);
+      setTimeout(initializeSimplePortfolio, 200);
     }
   } catch (error) {
     console.error('Portfolio initialization failed:', error);
-    // Retry after a delay
-    setTimeout(initializePortfolio, 500);
   }
 }
 
 // Start initialization when DOM is ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializePortfolio);
+  document.addEventListener('DOMContentLoaded', initializeSimplePortfolio);
 } else {
-  initializePortfolio();
+  initializeSimplePortfolio();
 }
