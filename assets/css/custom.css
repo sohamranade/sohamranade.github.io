@@ -26,56 +26,57 @@
 /* ===== Enhanced Project Cards ===== */
 .portfolio-item {
   margin-bottom: 30px;
-  transition: all 0.3s ease;
 }
 
 .portfolio-wrap {
-  position: relative;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
   background: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-
+.portfolio-image {
+  position: relative;
+  overflow: hidden;
+}
 
 .portfolio-wrap img {
   width: 100%;
   height: 250px;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  display: block;
 }
 
-.portfolio-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-  color: white;
+.portfolio-content {
   padding: 20px;
-  transform: translateY(0);
-  transition: transform 0.3s ease;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.portfolio-info h4 {
+.portfolio-title {
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  color: #272829;
 }
 
-.portfolio-info p {
+.portfolio-description {
   font-size: 14px;
-  opacity: 0.9;
-  margin-bottom: 10px;
+  color: #6c757d;
+  margin-bottom: 15px;
+  line-height: 1.5;
+  flex-grow: 1;
 }
 
 .portfolio-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .portfolio-tag {
@@ -87,32 +88,31 @@
   font-weight: 500;
 }
 
-.portfolio-links {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  display: flex;
-  gap: 10px;
-  opacity: 1;
+.portfolio-technologies {
+  margin-bottom: 15px;
 }
 
-.portfolio-links a {
+.portfolio-actions {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: rgba(20, 157, 221, 0.9);
-  color: white;
-  border-radius: 50%;
-  transition: all 0.3s ease;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.portfolio-actions .btn {
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 6px;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
 }
 
-.portfolio-links a:hover {
-  background: #149ddd;
-  transform: scale(1.1);
-  color: white;
+.portfolio-actions .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* ===== Project Statistics ===== */
@@ -419,6 +419,27 @@
   .specialty-item p {
     font-size: 12px;
   }
+
+  .portfolio-content {
+    padding: 15px;
+  }
+
+  .portfolio-title {
+    font-size: 16px;
+  }
+
+  .portfolio-description {
+    font-size: 13px;
+  }
+
+  .portfolio-actions {
+    gap: 6px;
+  }
+
+  .portfolio-actions .btn {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
 }
 
 /* ===== Animation for Skill Bars ===== */
@@ -455,119 +476,12 @@
   height: 3rem;
 }
 
-/* Portfolio item hover effects */
-.portfolio-wrap {
-  position: relative;
-  overflow: visible;
-  border-radius: 8px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  margin-bottom: 20px;
-}
-
-
-
-.portfolio-wrap img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-  border-radius: 8px 8px 0 0;
-}
-
-.portfolio-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
-  color: white;
-  padding: 20px;
-  transform: translateY(0);
-  transition: all 0.3s ease;
-  border-radius: 0 0 8px 8px;
-  z-index: 10;
-}
-
-.portfolio-info h4 {
-  margin-bottom: 10px;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-.portfolio-info p {
-  margin-bottom: 10px;
-  font-size: 0.9rem;
-  opacity: 0.9;
-}
-
-.portfolio-tags {
-  margin-bottom: 10px;
-}
-
-.portfolio-tag {
-  display: inline-block;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 0.7rem;
-  margin-right: 5px;
-  margin-bottom: 5px;
-}
-
-.portfolio-links {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  opacity: 1;
-  transform: translateX(0);
-  transition: all 0.3s ease;
-  z-index: 15;
-}
-
-.portfolio-links a {
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.9);
-  color: #333;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.portfolio-links a:hover {
-  background: #007bff;
-  color: white;
-  transform: scale(1.1);
-}
-
-/* Filter buttons */
-
-
-
+/* Portfolio item styles - updated to show info below image */
 
 /* Ensure proper spacing */
 .portfolio-container {
   margin-top: 30px;
 }
-
-.portfolio-item {
-  margin-bottom: 30px;
-}
-
-/* Fix for portfolio item overflow */
-.portfolio-item .portfolio-wrap {
-  overflow: visible;
-}
-
-
 
 /* Animation delays for staggered loading */
 .portfolio-item:nth-child(1) { animation-delay: 0.1s; }
