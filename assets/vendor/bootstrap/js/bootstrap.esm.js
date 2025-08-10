@@ -574,7 +574,7 @@ var EventHandler = {
       jQueryEvent = $.Event(event, args);
       $(element).trigger(jQueryEvent);
       bubbles = !jQueryEvent.isPropagationStopped();
-      nativeDispatch = !jQueryEvent.isImmediatePropagationStopped();
+      nativeDispatch = !jQueryEvent.isImMediatePropagationStopped();
       defaultPrevented = jQueryEvent.isDefaultPrevented();
     }
 
@@ -2162,7 +2162,7 @@ var Dropdown = /*#__PURE__*/function (_BaseComponent) {
         Manipulator.setDataAttribute(this._menu, 'popper', 'static');
       }
     } // If this is a touch-enabled device we add extra
-    // empty mouseover listeners to the body's immediate children;
+    // empty mouseover listeners to the body's imMediate children;
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 
@@ -3496,7 +3496,7 @@ var Tooltip = /*#__PURE__*/function (_BaseComponent) {
 
       (_tip$classList = tip.classList).add.apply(_tip$classList, customClass.split(' '));
     } // If this is a touch-enabled device we add extra
-    // empty mouseover listeners to the body's immediate children;
+    // empty mouseover listeners to the body's imMediate children;
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 

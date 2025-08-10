@@ -450,7 +450,7 @@
       link.rel = 'stylesheet';
       link.type = 'text/css';
       link.href = url;
-      link.media = 'all';
+      link.Media = 'all';
 
       if (headStyles) {
         head.insertBefore(link, headStyles[0]);
@@ -1037,18 +1037,18 @@
 
   function resetSlideMove(slide) {
     var transitionEnd = whichTransitionEvent();
-    var media = hasClass(slide, 'gslide-media') ? slide : slide.querySelector('.gslide-media');
+    var Media = hasClass(slide, 'gslide-Media') ? slide : slide.querySelector('.gslide-Media');
     var desc = slide.querySelector('.gslide-description');
-    addClass(media, 'greset');
-    cssTransform(media, 'translate3d(0, 0, 0)');
+    addClass(Media, 'greset');
+    cssTransform(Media, 'translate3d(0, 0, 0)');
     addEvent(transitionEnd, {
-      onElement: media,
+      onElement: Media,
       once: true,
       withCallback: function withCallback(event, target) {
-        removeClass(media, 'greset');
+        removeClass(Media, 'greset');
       }
     });
-    media.style.opacity = '';
+    Media.style.opacity = '';
 
     if (desc) {
       desc.style.opacity = '';
@@ -1065,8 +1065,8 @@
     var winHeight = winSize.height;
     var process = false;
     var currentSlide = null;
-    var media = null;
-    var mediaImage = null;
+    var Media = null;
+    var MediaImage = null;
     var doingMove = false;
     var initScale = 1;
     var maxScale = 4.5;
@@ -1109,12 +1109,12 @@
           xDown = e.targetTouches[0].clientX;
           yDown = e.targetTouches[0].clientY;
           currentSlide = instance.activeSlide;
-          media = currentSlide.querySelector('.gslide-media');
+          Media = currentSlide.querySelector('.gslide-Media');
           isInlined = currentSlide.querySelector('.gslide-inline');
-          mediaImage = null;
+          MediaImage = null;
 
-          if (hasClass(media, 'gslide-image')) {
-            mediaImage = media.querySelector('img');
+          if (hasClass(Media, 'gslide-image')) {
+            MediaImage = Media.querySelector('img');
           }
 
           removeClass(overlay, 'greset');
@@ -1165,7 +1165,7 @@
         vDistancePercent = vDistance * 100 / winHeight;
         var opacity;
 
-        if (vSwipe && mediaImage) {
+        if (vSwipe && MediaImage) {
           opacity = 1 - Math.abs(vDistance) / winHeight;
           overlay.style.opacity = opacity;
 
@@ -1176,18 +1176,18 @@
 
         if (hSwipe) {
           opacity = 1 - Math.abs(hDistance) / winWidth;
-          media.style.opacity = opacity;
+          Media.style.opacity = opacity;
 
           if (instance.settings.touchFollowAxis) {
             vDistancePercent = 0;
           }
         }
 
-        if (!mediaImage) {
-          return cssTransform(media, "translate3d(".concat(hDistancePercent, "%, 0, 0)"));
+        if (!MediaImage) {
+          return cssTransform(Media, "translate3d(".concat(hDistancePercent, "%, 0, 0)"));
         }
 
-        cssTransform(media, "translate3d(".concat(hDistancePercent, "%, ").concat(vDistancePercent, "%, 0)"));
+        cssTransform(Media, "translate3d(".concat(hDistancePercent, "%, ").concat(vDistancePercent, "%, 0)"));
       },
       touchEnd: function touchEnd() {
         if (!process) {
@@ -1205,7 +1205,7 @@
         var v = Math.abs(parseInt(vDistancePercent));
         var h = Math.abs(parseInt(hDistancePercent));
 
-        if (v > 29 && mediaImage) {
+        if (v > 29 && MediaImage) {
           instance.close();
           return;
         }
@@ -1213,7 +1213,7 @@
         if (v < 29 && h < 25) {
           addClass(overlay, 'greset');
           overlay.style.opacity = 1;
-          return resetSlideMove(media);
+          return resetSlideMove(Media);
         }
       },
       multipointEnd: function multipointEnd() {
@@ -1226,12 +1226,12 @@
         initScale = currentScale ? currentScale : 1;
       },
       pinch: function pinch(evt) {
-        if (!mediaImage || doingMove) {
+        if (!MediaImage || doingMove) {
           return false;
         }
 
         doingZoom = true;
-        mediaImage.scaleX = mediaImage.scaleY = initScale * evt.zoom;
+        MediaImage.scaleX = MediaImage.scaleY = initScale * evt.zoom;
         var scale = initScale * evt.zoom;
         imageZoomed = true;
 
@@ -1242,7 +1242,7 @@
           lastZoomedPosX = null;
           zoomedPosX = null;
           zoomedPosY = null;
-          mediaImage.setAttribute('style', '');
+          MediaImage.setAttribute('style', '');
           return;
         }
 
@@ -1250,7 +1250,7 @@
           scale = maxScale;
         }
 
-        mediaImage.style.transform = "scale3d(".concat(scale, ", ").concat(scale, ", 1)");
+        MediaImage.style.transform = "scale3d(".concat(scale, ", ").concat(scale, ", 1)");
         currentScale = scale;
       },
       pressMove: function pressMove(e) {
@@ -1274,7 +1274,7 @@
             style += " scale3d(".concat(currentScale, ", ").concat(currentScale, ", 1)");
           }
 
-          cssTransform(mediaImage, style);
+          cssTransform(MediaImage, style);
         }
       },
       swipe: function swipe(evt) {
@@ -1289,7 +1289,7 @@
 
         if (evt.direction == 'Left') {
           if (instance.index == instance.elements.length - 1) {
-            return resetSlideMove(media);
+            return resetSlideMove(Media);
           }
 
           instance.nextSlide();
@@ -1297,7 +1297,7 @@
 
         if (evt.direction == 'Right') {
           if (instance.index == 0) {
-            return resetSlideMove(media);
+            return resetSlideMove(Media);
           }
 
           instance.prevSlide();
@@ -1718,7 +1718,7 @@
   }();
 
   function slideImage(slide, data, index, callback) {
-    var slidemedia = slide.querySelector('.gslide-media');
+    var slideMedia = slide.querySelector('.gslide-Media');
     var img = new Image();
     var titleID = 'gSlideTitle_' + index;
     var textID = 'gSlideDesc_' + index;
@@ -1738,7 +1738,7 @@
       img.setAttribute('aria-describedby', textID);
     }
 
-    slidemedia.insertBefore(img, slidemedia.firstChild);
+    slideMedia.insertBefore(img, slideMedia.firstChild);
     return;
   }
 
@@ -1747,10 +1747,10 @@
 
     var slideContainer = slide.querySelector('.ginner-container');
     var videoID = 'gvideo' + index;
-    var slidemedia = slide.querySelector('.gslide-media');
+    var slideMedia = slide.querySelector('.gslide-Media');
     var videoPlayers = this.getAllPlayers();
     addClass(slideContainer, 'gvideo-container');
-    slidemedia.insertBefore(createHTML('<div class="gvideo-wrapper"></div>'), slidemedia.firstChild);
+    slideMedia.insertBefore(createHTML('<div class="gvideo-wrapper"></div>'), slideMedia.firstChild);
     var videoWrapper = slide.querySelector('.gvideo-wrapper');
     injectAssets(this.settings.plyr.css, 'Plyr');
     var url = data.href;
@@ -1763,7 +1763,7 @@
       protocol = 'http';
     }
 
-    slidemedia.style.maxWidth = data.width;
+    slideMedia.style.maxWidth = data.width;
     injectAssets(this.settings.plyr.js, 'Plyr', function () {
       if (url.match(/vimeo\.com\/([0-9]*)/)) {
         var vimeoID = /vimeo.*\/(\d+)/i.exec(url);
@@ -1828,8 +1828,8 @@
           callback();
         }
       });
-      player.on('enterfullscreen', handlemediaFullScreen);
-      player.on('exitfullscreen', handlemediaFullScreen);
+      player.on('enterfullscreen', handleMediaFullScreen);
+      player.on('exitfullscreen', handleMediaFullScreen);
     });
   }
 
@@ -1847,22 +1847,22 @@
     return videoID;
   }
 
-  function handlemediaFullScreen(event) {
-    var media = closest(event.target, '.gslide-media');
+  function handleMediaFullScreen(event) {
+    var Media = closest(event.target, '.gslide-Media');
 
     if (event.type == 'enterfullscreen') {
-      addClass(media, 'fullscreen');
+      addClass(Media, 'fullscreen');
     }
 
     if (event.type == 'exitfullscreen') {
-      removeClass(media, 'fullscreen');
+      removeClass(Media, 'fullscreen');
     }
   }
 
   function slideInline(slide, data, index, callback) {
     var _this = this;
 
-    var slidemedia = slide.querySelector('.gslide-media');
+    var slideMedia = slide.querySelector('.gslide-Media');
     var hash = has(data, 'href') && data.href ? data.href.split('#').pop().trim() : false;
     var content = has(data, 'content') && data.content ? data.content : false;
     var innerContent;
@@ -1903,11 +1903,11 @@
       return false;
     }
 
-    slidemedia.style.height = data.height;
-    slidemedia.style.width = data.width;
-    slidemedia.appendChild(innerContent);
+    slideMedia.style.height = data.height;
+    slideMedia.style.width = data.width;
+    slideMedia.appendChild(innerContent);
     this.events['inlineclose' + hash] = addEvent('click', {
-      onElement: slidemedia.querySelectorAll('.gtrigger-close'),
+      onElement: slideMedia.querySelectorAll('.gtrigger-close'),
       withCallback: function withCallback(e) {
         e.preventDefault();
 
@@ -1923,14 +1923,14 @@
   }
 
   function slideIframe(slide, data, index, callback) {
-    var slidemedia = slide.querySelector('.gslide-media');
+    var slideMedia = slide.querySelector('.gslide-Media');
     var iframe = createIframe({
       url: data.href,
       callback: callback
     });
-    slidemedia.parentNode.style.maxWidth = data.width;
-    slidemedia.parentNode.style.height = data.height;
-    slidemedia.appendChild(iframe);
+    slideMedia.parentNode.style.maxWidth = data.width;
+    slideMedia.parentNode.style.height = data.height;
+    slideMedia.appendChild(iframe);
     return;
   }
 
@@ -2170,7 +2170,7 @@
 
         var type = slideConfig.type;
         var position = slideConfig.descPosition;
-        var slidemedia = slide.querySelector('.gslide-media');
+        var slideMedia = slide.querySelector('.gslide-Media');
         var slideTitle = slide.querySelector('.gslide-title');
         var slideText = slide.querySelector('.gslide-desc');
         var slideDesc = slide.querySelector('.gdesc-inner');
@@ -2218,11 +2218,11 @@
             slideText.parentNode.removeChild(slideText);
           }
 
-          addClass(slidemedia.parentNode, "desc-".concat(position));
+          addClass(slideMedia.parentNode, "desc-".concat(position));
           addClass(slideDesc.parentNode, "description-".concat(position));
         }
 
-        addClass(slidemedia, "gslide-".concat(type));
+        addClass(slideMedia, "gslide-".concat(type));
         addClass(slide, 'loaded');
 
         if (type === 'video') {
@@ -2466,7 +2466,7 @@
       prev: '<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 477.175 477.175" xml:space="preserve"><g><path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z"/></g></svg>'
     }
   };
-  defaults.slideHTML = "<div class=\"gslide\">\n    <div class=\"gslide-inner-content\">\n        <div class=\"ginner-container\">\n            <div class=\"gslide-media\">\n            </div>\n            <div class=\"gslide-description\">\n                <div class=\"gdesc-inner\">\n                    <h4 class=\"gslide-title\"></h4>\n                    <div class=\"gslide-desc\"></div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>";
+  defaults.slideHTML = "<div class=\"gslide\">\n    <div class=\"gslide-inner-content\">\n        <div class=\"ginner-container\">\n            <div class=\"gslide-Media\">\n            </div>\n            <div class=\"gslide-description\">\n                <div class=\"gdesc-inner\">\n                    <h4 class=\"gslide-title\"></h4>\n                    <div class=\"gslide-desc\"></div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>";
   defaults.lightboxHTML = "<div id=\"glightbox-body\" class=\"glightbox-container\">\n    <div class=\"gloader visible\"></div>\n    <div class=\"goverlay\"></div>\n    <div class=\"gcontainer\">\n    <div id=\"glightbox-slider\" class=\"gslider\"></div>\n    <button class=\"gnext gbtn\" tabindex=\"0\" aria-label=\"Next\">{nextSVG}</button>\n    <button class=\"gprev gbtn\" tabindex=\"1\" aria-label=\"Previous\">{prevSVG}</button>\n    <button class=\"gclose gbtn\" tabindex=\"2\" aria-label=\"Close\">{closeSVG}</button>\n</div>\n</div>";
 
   var GlightboxInit = function () {
@@ -2648,7 +2648,7 @@
         }
 
         this.slideDescription = slideNode.querySelector('.gslide-description');
-        this.slideDescriptionContained = this.slideDescription && hasClass(this.slideDescription.parentNode, 'gslide-media');
+        this.slideDescriptionContained = this.slideDescription && hasClass(this.slideDescription.parentNode, 'gslide-Media');
 
         if (this.settings.preload) {
           this.preloadSlide(index + 1);
@@ -2831,7 +2831,7 @@
       value: function slideAnimateIn(slide, first) {
         var _this4 = this;
 
-        var slidemedia = slide.querySelector('.gslide-media');
+        var slideMedia = slide.querySelector('.gslide-Media');
         var slideDesc = slide.querySelector('.gslide-description');
         var prevData = {
           index: this.prevActiveSlideIndex,
@@ -2852,7 +2852,7 @@
           player: this.getSlidePlayerInstance(this.index)
         };
 
-        if (slidemedia.offsetWidth > 0 && slideDesc) {
+        if (slideMedia.offsetWidth > 0 && slideDesc) {
           hide(slideDesc);
 
           slideDesc.style.display = '';
@@ -2961,13 +2961,13 @@
         }
 
         animateElement(prevSlide, animOut, function () {
-          var media = prevSlide.querySelector('.gslide-media');
+          var Media = prevSlide.querySelector('.gslide-Media');
           var desc = prevSlide.querySelector('.gslide-description');
-          media.style.transform = '';
+          Media.style.transform = '';
 
-          removeClass(media, 'greset');
+          removeClass(Media, 'greset');
 
-          media.style.opacity = '';
+          Media.style.opacity = '';
 
           if (desc) {
             desc.style.opacity = '';

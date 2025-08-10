@@ -411,7 +411,7 @@
 }
 
 /* ===== Responsive Design ===== */
-@media (max-width: 768px) {
+@Media (max-width: 768px) {
   .project-hero h1 {
     font-size: 2rem;
   }
