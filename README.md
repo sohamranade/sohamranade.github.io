@@ -14,7 +14,7 @@ A modern, responsive personal portfolio website showcasing projects in robotics,
 ## 🚀 Quick Start
 
 1. **Add a New Project**: Edit `assets/js/projects-data.js`
-2. **Upload Images**: Add to `media/ProjectName/` folder
+2. **Upload Images**: Add to `Media/ProjectName/` folder
 3. **Create Detail Page**: Copy `project-template.html` or use existing pages as reference
 
 See [PROJECT_SETUP_GUIDE.md](PROJECT_SETUP_GUIDE.md) for detailed instructions.
@@ -27,7 +27,7 @@ See [PROJECT_SETUP_GUIDE.md](PROJECT_SETUP_GUIDE.md) for detailed instructions.
 │   ├── js/            # JavaScript (template + portfolio functionality)
 │   ├── img/           # Profile and general images
 │   └── vendor/        # Third-party libraries
-├── media/             # Project images and media files
+├── Media/             # Project images and Media files
 ├── *.html             # Individual project pages
 └── index.html         # Main homepage
 ```

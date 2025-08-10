@@ -131,7 +131,7 @@ If you want to add more features later, you can:
 1. **Search functionality** - Add a search bar to filter posts
 2. **Category filtering** - Add buttons to filter by category
 3. **Comments system** - Integrate with a commenting service
-4. **Social sharing** - Add more social media sharing options
+4. **Social sharing** - Add more social Media sharing options
 5. **Related posts** - Show related posts at the bottom of each post
 
 ## Need Help?

@@ -136,7 +136,7 @@
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@Media (max-width: 768px) {
   .skill-category {
     padding: 20px;
   }
@@ -159,7 +159,7 @@
   }
 }
 
-@media (max-width: 576px) {
+@Media (max-width: 576px) {
   .skill-items {
     gap: 8px;
   }
