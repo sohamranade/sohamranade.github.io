@@ -37,7 +37,7 @@ function loadSkills() {
 // Create a skill category element
 function createSkillCategory(category, index) {
   const col = document.createElement('div');
-  col.className = 'col-lg-6';
+  col.className = 'col-xl-4 col-lg-6';
   col.setAttribute('data-aos', 'fade-up');
   if (index > 0) {
     col.setAttribute('data-aos-delay', (index * 100).toString());
