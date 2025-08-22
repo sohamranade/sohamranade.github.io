@@ -51,7 +51,7 @@
 }
 
 .badge-category {
-  background: #149ddd;
+  background: #2c5530;
   color: white;
   padding: 8px 16px;
   border-radius: 20px;
@@ -140,7 +140,7 @@
 
 .project-gallery-slider .swiper-button-next,
 .project-gallery-slider .swiper-button-prev {
-  color: #149ddd;
+  color: #2c5530;
   background: rgba(255, 255, 255, 0.9);
   border-radius: 50%;
   width: 50px;
@@ -148,7 +148,7 @@
 }
 
 .project-gallery-slider .swiper-pagination-bullet {
-  background: #149ddd;
+  background: #2c5530;
   opacity: 0.5;
 }
 
@@ -179,7 +179,7 @@
 }
 
 .info-item h6 {
-  color: #149ddd;
+  color: #2c5530;
   font-weight: 600;
   margin-bottom: 10px;
   display: flex;
@@ -204,7 +204,7 @@
 }
 
 .tech-tag {
-  background: #149ddd;
+  background: #2c5530;
   color: white;
   padding: 4px 12px;
   border-radius: 12px;
@@ -247,7 +247,7 @@
 }
 
 .description-content a {
-  color: #149ddd;
+  color: #2c5530;
   font-weight: 500;
   text-decoration: none;
 }
@@ -398,7 +398,7 @@
 
 .nav-project-card .nav-direction {
   font-size: 12px;
-  color: #149ddd;
+  color: #2c5530;
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 5px;
@@ -484,7 +484,7 @@
   padding: 30px;
   background: #f8f9fa;
   border-radius: 10px;
-  border-left: 4px solid #149ddd;
+  border-left: 4px solid #2c5530;
 }
 
 .project-section h4 {
@@ -493,7 +493,7 @@
 }
 
 .highlight-box {
-  background: linear-gradient(135deg, #149ddd, #37b3ed);
+  background: linear-gradient(135deg, #2c5530, #4a7c59);
   color: white;
   padding: 25px;
   border-radius: 10px;
