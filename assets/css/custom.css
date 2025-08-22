@@ -16,7 +16,7 @@
 
 .section-separator {
   height: 2px;
-  background: linear-gradient(90deg, transparent, #2c5530, transparent);
+  background: linear-gradient(90deg, transparent, #1e3a8a, transparent);
   margin: 40px 0;
   opacity: 0.6;
 }
@@ -80,7 +80,7 @@
 }
 
 .portfolio-tag {
-  background: rgba(44, 85, 48, 0.8);
+  background: rgba(30, 58, 138, 0.8);
   color: white;
   padding: 2px 8px;
   border-radius: 12px;
@@ -133,7 +133,7 @@
   width: 40px;
   height: 40px;
   border: 4px solid #f3f3f3;
-  border-top: 4px solid #2c5530;
+  border-top: 4px solid #1e3a8a;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -145,7 +145,7 @@
 
 /* ===== Enhanced Hero Section ===== */
 #hero {
-  background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
   position: relative;
 }
 
@@ -204,7 +204,7 @@
 
 .skill-header i {
   font-size: 24px;
-  color: #2c5530;
+  color: #1e3a8a;
   margin-right: 15px;
 }
 
@@ -241,7 +241,7 @@
 
 .skill-bar {
   height: 100%;
-  background: linear-gradient(90deg, #2c5530, #4a7c59);
+  background: linear-gradient(90deg, #1e3a8a, #3b82f6);
   border-radius: 4px;
   transition: width 1s ease-in-out;
   position: relative;
@@ -303,7 +303,7 @@
 .specialty-item:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  background: linear-gradient(135deg, #2c5530, #4a7c59);
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
   color: white;
 }
 
@@ -315,7 +315,7 @@
 
 .specialty-item i {
   font-size: 32px;
-  color: #2c5530;
+  color: #1e3a8a;
   margin-bottom: 15px;
   transition: color 0.3s ease;
 }
@@ -374,13 +374,13 @@
 }
 
 .contact .info i {
-  color: #2c5530;
+  color: #1e3a8a;
   font-size: 24px;
 }
 
 /* ===== Utility Classes ===== */
 .text-gradient {
-  background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
