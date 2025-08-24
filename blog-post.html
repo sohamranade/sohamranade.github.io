@@ -63,12 +63,31 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
     <div class="hero-container" data-aos="fade-in">
-      <h1>Blog Post</h1>
-      <p>Reading and sharing thoughts</p>
+      <h1 id="blog-post-title">Blog Post</h1>
+      <p id="blog-post-excerpt"></p>
     </div>
   </section><!-- End Hero -->
 
   <main id="main">
+  <script>
+    // Wait for blog post data to be available (assuming blogData is loaded)
+    document.addEventListener("DOMContentLoaded", function () {
+      // blogData should be defined in assets/js/blog-data.js
+      // blog.js should set the current post, e.g., window.currentBlogPost
+      function setHeroSection(post) {
+        if (!post) return;
+        document.getElementById('blog-post-title').textContent = post.title || 'Blog Post';
+        document.getElementById('blog-post-excerpt').textContent = post.excerpt || '';
+      }
+      // Try to get the current blog post from blog.js
+      if (window.currentBlogPost) {
+        setHeroSection(window.currentBlogPost);
+      } else if (window.blogData && window.blogData.length > 0) {
+        // fallback: use the first post
+        setHeroSection(window.blogData[0]);
+      }
+    });
+  </script>
 
     <!-- ======= Blog Post Section ======= -->
     <section id="blog-post" class="blog-post">
