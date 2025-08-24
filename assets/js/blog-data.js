@@ -21,7 +21,7 @@ const blogPosts = [
     `,
     date: "2019-06-05",
     category: "personal",
-    image: "assets/img/smile.jpg",
+    image: "assets/img/blogs/smile.jpg",
     readTime: "1 min read",
     tags: ["personal", "poem"]
   },
@@ -52,7 +52,7 @@ const blogPosts = [
     `,
     date: "2019-12-22",
     category: "personal",
-    image: "assets/img/titanic.jpg",
+    image: "assets/img/blogs/titanic.jpg",
     readTime: "1 min read",
     tags: ["personal", "poem"]
   },
@@ -81,7 +81,7 @@ const blogPosts = [
     `,
     date: "2019-12-31",
     category: "personal",
-    image: "assets/img/cluedo.jpg",
+    image: "assets/img/blogs/cluedo.jpg",
     readTime: "1 min read",
     tags: ["personal", "poem"]
   }
