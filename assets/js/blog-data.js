@@ -2,37 +2,88 @@
 const blogPosts = [
   {
     id: 1,
-    title: "My Journey into Robotics",
-    excerpt: "How a childhood fascination with robots led me to pursue a career in robotics engineering and what I've learned along the way.",
+    title: "Smile",
+    excerpt: "A silly poem that I thought of while walking for my intership one day.",
     content: `
-      <h2>The Beginning</h2>
-      <p>My fascination with robotics began when I was just a child. I remember watching movies like "Wall-E" and "Big Hero 6" and being completely mesmerized by the idea of creating machines that could think, feel, and help humans.</p>
-      
-      <p>What started as simple LEGO Mindstorms projects in middle school has now evolved into a serious pursuit of robotics engineering at Columbia University. The journey has been nothing short of incredible.</p>
-      
-      <h2>Key Learnings</h2>
-      <p>Throughout my journey, I've learned several important lessons:</p>
-      <ul>
-        <li><strong>Interdisciplinary Approach:</strong> Robotics isn't just about mechanical engineering or programming - it's about combining multiple disciplines seamlessly.</li>
-        <li><strong>Iteration is Key:</strong> Every successful robot I've built has gone through countless iterations and failures.</li>
-        <li><strong>Human-Centered Design:</strong> The best robots are those that truly understand and serve human needs.</li>
-      </ul>
-      
-      <h2>Current Projects</h2>
-      <p>Currently, I'm working on designing a dancing robot as part of my course project. This project combines my love for robotics with my appreciation for the arts, creating something that's both technically challenging and artistically beautiful.</p>
-      
-      <blockquote>
-        "The future of robotics isn't about replacing humans, but about augmenting human capabilities and creating new possibilities."
-      </blockquote>
-      
-      <h2>Looking Forward</h2>
-      <p>As I continue my studies and work on various projects, I'm excited about the possibilities that lie ahead. The field of robotics is evolving rapidly, and I want to be at the forefront of these innovations.</p>
+      <div style="text-align: center; font-style: italic;">
+        5 simple letters, millions of emotions…<br>
+        Right from silly chuckles to volcanic eruptions..<br>
+        It is a spell so easy, yet so powerful…<br>
+        Once cast on someone, it makes their life colorful….<br>
+        It doesn’t differentiate among old and young….<br>
+        Makes everyone hum the song that is being sung…<br>
+        It doesn’t care if you are poor or rich…<br>
+        Differentiating is something this guy does not teach….<br>
+        Hope I helped you with your today’s dose, so smile and smile…<br>
+        And then  thank me !! <br>
+        I just extended your life for a little while…
+      </div>
     `,
-    date: "2024-01-15",
-    category: "Robotics",
-    image: "assets/img/robot.jpg",
-    readTime: "5 min read",
-    tags: ["robotics", "engineering", "personal"]
+    date: "2019-06-05",
+    category: "personal",
+    image: "assets/img/smile.jpg",
+    readTime: "1 min read",
+    tags: ["personal", "poem"]
+  },
+    {
+    id: 2,
+    title: "Titanic",
+    excerpt: "Love is a beautiful blend of these small small moments. I am sure you all must have felt it. So here is a small poem where I tried to give justice to these feelings. Hope you enjoy it…",
+    content: `
+      <div style="text-align: center; font-style: italic;">
+        I look into your eyes…
+        You into mine….
+        We smile, we know…
+        I end the moment by grabbing your phone..
+        You always get annoyed but somehow let me have it..
+        You know its not about the trust…
+        It’s about the silly things that retains the thirst..
+        The thirst of staying together..
+        The thirst of enjoying together..
+        I let you hit me, It never hurts..
+        No matter how hard you try..
+        It just never does..
+        These things keep the friction..
+        These things keep us afloat..
+        Afterall, I am “Jack” and you are my “Rose”..
+        And we will make sure that,
+        our titanic never leaves its course…!!!
+      </div>
+    `,
+    date: "2019-12-22",
+    category: "personal",
+    image: "assets/img/titanic.jpg",
+    readTime: "1 min read",
+    tags: ["personal", "poem"]
+  },
+  {
+    id: 3,
+    title: "Cluedo",
+    excerpt: "What makes poems unique is that they are usually based on themes and experiences of the poet who writes it. The inspiration of writing a poem can strike at any point of time and in any situation. So here is a poem which I wrote while my friends were playing this amazing board game named “Cluedo”. As the name suggests, this is a hybrid of Ludo and a murder mystery where in a guy gets killed and there are suspects and weapons and places where the potential murder would have happened. I was so intrigued by the concept that rather than playing it I decided to express my thoughts through a poem. Hope you like it!!!",
+    content: `
+      <div style="text-align: center; font-style: italic;">
+        It was a beautiful day all bright and sunny
+        However, an ominous wind caught the Tudor’s as Mrs black screamed
+        “Oh my God? Wake up? Honey?”
+        And the matter unfolded with the murder of Dr Black… 
+        Surprising everyone with 4 suspects, 4 weapons, 5 rooms and a broken pact…
+        Mrs scarlet with her taser ? or colonel mustard with his cane… 
+        Was it Mrs white with a candle stand ? or professor plum with a bane.. ?
+        The PI looked into the kitchen, the study and the different halls. 
+        Not leaving the lounge and even the room reserved for balls.
+        And so the game began with a chat and some questions… 
+        Everyone cautiously addressing them giving less to devise any equations… 
+        The more the detective dug deep, the more it muddled him
+        Was Mrs Scarlet at the site ?or did she really go for a swim? 
+        The harder he tried the difficult it was…
+        So was the mystery, that even after all these years he still doesn’t know the cause??? 
+      </div>
+    `,
+    date: "2019-12-31",
+    category: "personal",
+    image: "assets/img/cluedo.jpg",
+    readTime: "1 min read",
+    tags: ["personal", "poem"]
   }
 ];
 

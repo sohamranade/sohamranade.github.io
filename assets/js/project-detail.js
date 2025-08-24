@@ -38,7 +38,7 @@ class ProjectDetailManager {
     
     // Map filenames to project IDs
     const fileToIdMap = {
-      'Michael_jansen': 'michael-jansen',
+      'michael_jansen': 'michael-jansen',
       'mapping': 'robot-mapping',
       'robocon': 'robocon-2017',
       'quadcopter': 'quadcopter-controller',

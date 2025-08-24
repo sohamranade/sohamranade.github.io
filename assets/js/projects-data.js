@@ -18,7 +18,7 @@ const projectsData = {
         "Media/glamourshot.jpg",
         "Media/sideview.jpg"
       ],
-      detailPage: "Michael_jansen.html",
+      detailPage: "michael_jansen.html",
       technologies: ["Arduino", "Servo Motors", "Control Theory", "Mechanical Design"],
       date: "2022",
       status: "completed",
